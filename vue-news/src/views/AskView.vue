@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div v-for="ask in asks" :key="ask.id">{{ ask.title }}</div>
+    <div v-for="ask in this.$store.state.ask" :key="ask.id">
+      {{ ask.title }}
+    </div>
   </div>
 </template>
 
 <script>
-import { fetchAskList } from "../api/axios.js";
-
 export default {
   data() {
     return {
@@ -14,15 +14,7 @@ export default {
     };
   },
   created() {
-    var vm = this;
-    fetchAskList()
-      .then(function (res) {
-        console.log(res);
-        vm.asks = res.data;
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+    this.$store.dispatch("FETCH_ASK");
   },
 };
 </script>

@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div v-for="job in jobs" :key="job.id">{{ job.title }}</div>
+    <div v-for="job in this.$store.state.jobs" :key="job.id">
+      {{ job.title }}
+    </div>
   </div>
 </template>
 
 <script>
-import { fetchJobsList } from "../api/axios.js";
-
 export default {
   data() {
     return {
@@ -14,15 +14,7 @@ export default {
     };
   },
   created() {
-    var vm = this;
-    fetchJobsList()
-      .then(function (res) {
-        console.log(res);
-        vm.jobs = res.data;
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+    this.$store.dispatch("FETCH_JOBS");
   },
 };
 </script>
