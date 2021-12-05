@@ -1,33 +1,15 @@
 <template>
   <div>
-    <div class="user-container">
-      <div><i class="fas fa-user"></i></div>
-      <div class="user-desc">
-        <router-link :to="`/user/${itemInfo.user}`">
-          {{ itemInfo.user }}
-        </router-link>
-        <div class="time">
-          {{ itemInfo.time_ago }}
-        </div>
-      </div>
-    </div>
-    <div class="content">
-      <h2>{{ itemInfo.title }}</h2>
-      <div v-html="itemInfo.content"></div>
-    </div>
+    <list-item></list-item>
   </div>
 </template>
 
 <script>
+import ListItem from "../components/ListItem.vue";
+
 export default {
-  computed: {
-    itemInfo() {
-      return this.$store.state.item;
-    },
-  },
-  created() {
-    const itemId = this.$route.params.id;
-    this.$store.dispatch("FETCH_ITEM", itemId);
+  components: {
+    ListItem,
   },
 };
 </script>

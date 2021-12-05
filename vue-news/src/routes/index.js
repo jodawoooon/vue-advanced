@@ -13,14 +13,17 @@ const router = new VueRouter({
   mode: "history",
   routes: [
     {
+      name: "news",
       path: "/news",
       component: NewsView,
     },
     {
+      name: "ask",
       path: "/ask",
       component: AskView,
     },
     {
+      name: "jobs",
       path: "/jobs",
       component: JobsView,
     },
