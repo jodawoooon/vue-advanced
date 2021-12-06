@@ -6,16 +6,20 @@ const config = {
 };
 
 // API Method 정의
-export function fetchNewsList() {
-  return axios.get(`${config.baseUrl}news/1.json`);
-}
+// export function fetchNewsList() {
+//   return axios.get(`${config.baseUrl}news/1.json`);
+// }
 
-export function fetchAskList() {
-  return axios.get(`${config.baseUrl}ask/1.json`);
-}
+// export function fetchAskList() {
+//   return axios.get(`${config.baseUrl}ask/1.json`);
+// }
 
-export function fetchJobsList() {
-  return axios.get(`${config.baseUrl}jobs/1.json`);
+// export function fetchJobsList() {
+//   return axios.get(`${config.baseUrl}jobs/1.json`);
+// }
+
+export function fetchList(page) {
+  return axios.get(`${config.baseUrl}${page}/1.json`);
 }
 
 export function fetchUserInfo(username) {
