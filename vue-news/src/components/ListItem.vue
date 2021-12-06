@@ -8,15 +8,15 @@
         </div>
         <div>
           <p class="news-title">
-            <template v-if="item.url">
-              <a :href="item.url">
-                {{ item.title }}
-              </a>
-            </template>
-            <template v-else>
+            <template v-if="item.type === 'ask'">
               <router-link :to="`/item/${item.id}`">
                 {{ item.title }}
               </router-link>
+            </template>
+            <template v-else>
+              <a :href="item.url">
+                {{ item.title }}
+              </a>
             </template>
           </p>
           <small class="user-text">

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <toolbar></toolbar>
-    <transition :name="page">
+    <transition>
       <router-view></router-view>
     </transition>
   </div>
@@ -25,9 +25,20 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 
   color: #2c3e50;
-  margin-top: 60px;
 }
 
+a {
+  color: #272525;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #e97911;
+  text-decoration: underline;
+}
+a.router-link-exact-active {
+  text-decoration: underline;
+}
 body {
   padding: 0;
   margin: 0;

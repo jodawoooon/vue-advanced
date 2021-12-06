@@ -13,6 +13,10 @@ const router = new VueRouter({
   mode: "history",
   routes: [
     {
+      path: "/",
+      redirect: "/news",
+    },
+    {
       name: "news",
       path: "/news",
       component: NewsView,

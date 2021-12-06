@@ -1,15 +1,35 @@
 <template>
   <div>
-    <list-item></list-item>
+    <section>
+      <user-profile :info="itemInfo">
+        <router-link slot="username" :to="`/user/${itemInfo.user}`">{{
+          itemInfo.user
+        }}</router-link>
+        <template slot="time">{{ "Posted " + itemInfo.time_ago }}</template>
+      </user-profile>
+    </section>
+    <div class="content">
+      <h2>{{ itemInfo.title }}</h2>
+      <div v-html="itemInfo.content"></div>
+    </div>
   </div>
 </template>
 
 <script>
-import ListItem from "../components/ListItem.vue";
+import UserProfile from "../components/UserProfile.vue";
 
 export default {
   components: {
-    ListItem,
+    UserProfile,
+  },
+  computed: {
+    itemInfo() {
+      return this.$store.state.item;
+    },
+  },
+  created() {
+    const itemId = this.$route.params.id;
+    this.$store.dispatch("FETCH_ITEM", itemId);
   },
 };
 </script>
