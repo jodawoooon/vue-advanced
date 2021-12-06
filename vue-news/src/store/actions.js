@@ -2,7 +2,7 @@ import { fetchList, fetchUserInfo, fetchItemInfo } from "../api/axios";
 
 export default {
   FETCH_LIST({ commit }, page) {
-    fetchList(page)
+    return fetchList(page)
       .then(({ data }) => commit("SET_LIST", data))
       .catch((err) => console.log(err));
   },
@@ -38,7 +38,7 @@ export default {
   //     });
   // },
   FETCH_USER({ commit }, name) {
-    fetchUserInfo(name)
+    return fetchUserInfo(name)
       .then(({ data }) => {
         console.log(data);
         commit("SET_USER", data);
@@ -48,7 +48,7 @@ export default {
       });
   },
   FETCH_ITEM({ commit }, id) {
-    fetchItemInfo(id)
+    return fetchItemInfo(id)
       .then(({ data }) => {
         console.log(data);
         commit("SET_ITEM", data);
