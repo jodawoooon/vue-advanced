@@ -18,8 +18,13 @@ const config = {
 //   return axios.get(`${config.baseUrl}jobs/1.json`);
 // }
 
-export function fetchList(page) {
-  return axios.get(`${config.baseUrl}${page}/1.json`);
+//async
+export async function fetchList(page) {
+  try {
+    return await axios.get(`${config.baseUrl}${page}/1.json`);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 export function fetchUserInfo(username) {
